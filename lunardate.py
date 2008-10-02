@@ -7,7 +7,7 @@
 # Copyright (C) 2008 LI Daobing <lidaobing@gmail.com>
 
 '''
-python-lunardate - A Chinese Calendar Library in Pure Python
+A Chinese Calendar Library in Pure Python
 
 Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
 

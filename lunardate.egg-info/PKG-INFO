@@ -1,0 +1,15 @@
+Metadata-Version: 1.0
+Name: lunardate
+Version: 0.1
+Summary: A Chinese Calendar Library in Pure Python
+Home-page: http://code.google.com/p/python-lunardate
+Author: LI Daobing
+Author-email: lidaobing@gmail.com
+License: GPLv3
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Other/Nonlisted Topic
