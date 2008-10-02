@@ -12,4 +12,4 @@ Classifier: Development Status :: 4 - Beta
 Classifier: Programming Language :: Python
 Classifier: License :: OSI Approved :: GNU General Public License (GPL)
 Classifier: Operating System :: OS Independent
-Classifier: Topic :: Other/Nonlisted Topic
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

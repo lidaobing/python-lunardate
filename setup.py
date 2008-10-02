@@ -15,6 +15,6 @@ setup(name='lunardate',
                      'Programming Language :: Python',
                      'License :: OSI Approved :: GNU General Public License (GPL)',
                      'Operating System :: OS Independent',
-                     'Topic :: Other/Nonlisted Topic',
+                     'Topic :: Software Development :: Libraries :: Python Modules'
                      ]
       )
