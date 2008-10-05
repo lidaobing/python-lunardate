@@ -1,12 +1,42 @@
 Metadata-Version: 1.0
 Name: lunardate
-Version: 0.1
+Version: 0.1.1
 Summary: A Chinese Calendar Library in Pure Python
 Home-page: http://code.google.com/p/python-lunardate
 Author: LI Daobing
 Author-email: lidaobing@gmail.com
 License: GPLv3
-Description: UNKNOWN
+Description: 
+        A Chinese Calendar Library in Pure Python
+        
+        Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
+        
+        Usage:
+        >>> LunarDate.fromSolarDate(1976, 10, 1)
+        LunarDate(1976, 8, 8, 1)
+        >>> LunarDate(1976, 8, 8, 1).toSolarDate()
+        datetime.date(1976, 10, 1)
+        >>> LunarDate(1976, 8, 8, 1).year
+        1976
+        >>> LunarDate(1976, 8, 8, 1).month
+        8
+        >>> LunarDate(1976, 8, 8, 1).day
+        8
+        >>> LunarDate(1976, 8, 8, 1).isLeapMonth
+        True
+        >>>
+        
+        Limits:
+        
+        this library can only deal with year from 1900 to 2050 (in chinese calendar).
+        
+        See also:
+        
+        * lunar: http://packages.qa.debian.org/l/lunar.html,
+        A converter written in C, this program is derived from it.
+        * python-lunar: http://code.google.com/p/liblunar/
+        Another library written in C, including a python binding.
+        
 Platform: UNKNOWN
 Classifier: Development Status :: 4 - Beta
 Classifier: Programming Language :: Python
