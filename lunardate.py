@@ -80,6 +80,11 @@ class LunarDate(object):
         datetime.date(2008, 10, 2)
         >>> LunarDate(1976, 8, 8, 1).toSolarDate()
         datetime.date(1976, 10, 1)
+        >>> LunarDate(2004, 1, 30).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: day out of range
+        >>>
         '''
         def _calcDays(yearInfo, month, day, isLeapMonth):
             isLeapMonth = int(isLeapMonth)
@@ -87,8 +92,11 @@ class LunarDate(object):
             ok = False
             for _month, _days, _isLeapMonth in self._enumMonth(yearInfo):
                 if (_month, _isLeapMonth) == (month, isLeapMonth):
-                    res += day - 1
-                    return res
+                    if 1 <= day <= _days:
+                        res += day - 1
+                        return res
+                    else:
+                        raise ValueError, "day out of range"
                 res += _days
                 
             raise ValueError, "month out of range"
