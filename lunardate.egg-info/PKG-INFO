@@ -8,10 +8,12 @@ Author-email: lidaobing@gmail.com
 License: GPLv3
 Description: 
         A Chinese Calendar Library in Pure Python
+        =========================================
         
         Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
         
-        Usage:
+        Usage
+        -----
         >>> LunarDate.fromSolarDate(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
         >>> LunarDate(1976, 8, 8, 1).toSolarDate()
@@ -26,11 +28,13 @@ Description:
         True
         >>>
         
-        Limits:
+        Limits
+        ------
         
         this library can only deal with year from 1900 to 2050 (in chinese calendar).
         
-        See also:
+        See also
+        --------
         
         * lunar: http://packages.qa.debian.org/l/lunar.html,
         A converter written in C, this program is derived from it.
