@@ -67,6 +67,8 @@ class LunarDate(object):
         LunarDate(2008, 9, 4, 0)
         >>> LunarDate.fromSolarDate(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
+        >>> LunarDate.fromSolarDate(2033, 10, 23)
+        LunarDate(2033, 10, 1, 0)
         '''
         solarDate = datetime.date(year, month, day)
         offset = (solarDate - LunarDate._startDate).days
@@ -190,7 +192,7 @@ yearInfos = [
         0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954,#   /* 2020 */
         0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6,#   /* 2025 */
         0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0,#   /* 2030 */
-        0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0,#   /* 2035 */
+        0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0,#   /* 2035 */
         0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0,#   /* 2040 */
         0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0,#   /* 2045 */
         0x0aa50, 0x1b255, 0x06d20, 0x0ada0          #   /* 2049 */
