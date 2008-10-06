@@ -27,6 +27,11 @@ Usage
         >>> LunarDate(1976, 8, 8, 1).isLeapMonth
         True
         >>>
+
+News
+----
+
+* 0.1.3: support python 3.0
         
 Limits
 ------
