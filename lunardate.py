@@ -102,10 +102,10 @@ class LunarDate(object):
                         res += day - 1
                         return res
                     else:
-                        raise ValueError, "day out of range"
+                        raise ValueError("day out of range")
                 res += _days
                 
-            raise ValueError, "month out of range"
+            raise ValueError("month out of range")
         
         offset = 0
         if self.year < 1900 or self.year > 2050:
@@ -126,7 +126,7 @@ class LunarDate(object):
         elif leapMonth <= 12:
             months.insert(leapMonth, (leapMonth, 1))
         else:
-            raise ValueError, "yearInfo %r mod 16 should in [0, 12]" % yearInfo
+            raise ValueError("yearInfo %r mod 16 should in [0, 12]" % yearInfo)
         
         for month, isLeapMonth in months:
             if isLeapMonth:
