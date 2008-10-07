@@ -26,7 +26,42 @@ Usage
         8
         >>> LunarDate(1976, 8, 8, 1).isLeapMonth
         True
-        >>>
+        
+        >>> today = LunarDate.today()
+        >>> type(today).__name__
+        'LunarDate'
+        
+        >>> # support '+' and '-' between datetime.date and datetime.timedelta
+        >>> ld = LunarDate(1976,8,8)
+        >>> sd = datetime.date(2008,1,1)
+        >>> td = datetime.timedelta(days=10)
+        >>> ld-ld
+        datetime.timedelta(0)
+        >>> ld-sd
+        datetime.timedelta(-11444)
+        >>> ld-td
+        LunarDate(1976, 7, 27, 0)
+        >>> sd-ld
+        datetime.timedelta(11444)
+        >>> ld+td
+        LunarDate(1976, 8, 18, 0)
+        >>> td+ld
+        LunarDate(1976, 8, 18, 0)
+        >>> ld2 = LunarDate.today()
+        >>> ld < ld2
+        True
+        >>> ld <= ld2
+        True
+        >>> ld > ld2
+        False
+        >>> ld >= ld2
+        False
+        >>> ld == ld2
+        False
+        >>> ld != ld2
+        True
+        >>> ld == ld
+        True
 
 News
 ----
@@ -52,8 +87,7 @@ import datetime
 __version__ = "$Rev$"
 __all__ = ['LunarDate']
 
-class LunarDate(object):
-    
+class LunarDate(object):    
     _startDate = datetime.date(1900, 1, 31)
     
     def __init__(self, year, month, day, isLeapMonth=False):
@@ -121,6 +155,34 @@ class LunarDate(object):
             
         offset += _calcDays(yearInfos[yearIdx], self.month, self.day, self.isLeapMonth)
         return self._startDate + datetime.timedelta(days=offset)
+    
+    def __sub__(self, other):
+        if isinstance(other, LunarDate):
+            return self.toSolarDate() - other.toSolarDate()
+        elif isinstance(other, datetime.date):
+            return self.toSolarDate() - other
+        elif isinstance(other, datetime.timedelta):
+            res = self.toSolarDate() - other
+            return LunarDate.fromSolarDate(res.year, res.month, res.day)
+        raise TypeError
+    
+    def __rsub__(self, other):
+        if isinstance(other, datetime.date):
+            return other - self.toSolarDate()
+        
+    def __add__(self, other):
+        if isinstance(other, datetime.timedelta):
+            res = self.toSolarDate() + other
+            return LunarDate.fromSolarDate(res.year, res.month, res.day)
+        raise TypeError
+    
+    def __radd__(self, other):
+        return self + other
+    
+    @classmethod
+    def today(cls):
+        res = datetime.date.today()
+        return cls.fromSolarDate(res.year, res.month, res.day)
     
     @staticmethod
     def _enumMonth(yearInfo):
