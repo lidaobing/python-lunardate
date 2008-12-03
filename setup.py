@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 import lunardate
 
 setup(name='lunardate',
-      version='0.1.3',
+      version='0.1.4',
       py_modules = ['lunardate'],
       description = 'A Chinese Calendar Library in Pure Python',
       long_description = lunardate.__doc__,
