@@ -71,7 +71,7 @@ News
 Limits
 ------
 
-this library can only deal with year from 1900 to 2050 (in chinese calendar).
+this library can only deal with year from 1900 to 2049 (in chinese calendar).
         
 See also
 --------
@@ -129,6 +129,10 @@ class LunarDate(object):
         Traceback (most recent call last):
         ...
         ValueError: day out of range
+        >>> LunarDate(2050, 1, 1).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: year out of range [1900, 2050)
         >>>
         '''
         def _calcDays(yearInfo, month, day, isLeapMonth):
@@ -147,8 +151,8 @@ class LunarDate(object):
             raise ValueError("month out of range")
         
         offset = 0
-        if self.year < 1900 or self.year > 2050:
-            raise ValueError('year out of range [1900, 2050]')
+        if self.year < 1900 or self.year >= 2050:
+            raise ValueError('year out of range [1900, 2050)')
         yearIdx = self.year - 1900
         for i in range(yearIdx):
             offset += yearDays[i]
