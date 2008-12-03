@@ -66,6 +66,7 @@ Usage
 News
 ----
 
+* 0.1.4: support '+', '-' and compare, fix bug in year 2050
 * 0.1.3: support python 3.0
         
 Limits
@@ -182,6 +183,12 @@ class LunarDate(object):
     
     def __radd__(self, other):
         return self + other
+
+    def __lt__(self, other):
+        return self - other < datetime.timedelta(0)
+
+    def __le__(self, other):
+        return self - other <= datetime.timedelta(0)
     
     @classmethod
     def today(cls):
