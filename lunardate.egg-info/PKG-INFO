@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: lunardate
-Version: 0.1.3
+Version: 0.1.4
 Summary: A Chinese Calendar Library in Pure Python
 Home-page: http://code.google.com/p/python-lunardate
 Author: LI Daobing
@@ -26,17 +26,53 @@ Description:
         8
         >>> LunarDate(1976, 8, 8, 1).isLeapMonth
         True
-        >>>
+        
+        >>> today = LunarDate.today()
+        >>> type(today).__name__
+        'LunarDate'
+        
+        >>> # support '+' and '-' between datetime.date and datetime.timedelta
+        >>> ld = LunarDate(1976,8,8)
+        >>> sd = datetime.date(2008,1,1)
+        >>> td = datetime.timedelta(days=10)
+        >>> ld-ld
+        datetime.timedelta(0)
+        >>> ld-sd
+        datetime.timedelta(-11444)
+        >>> ld-td
+        LunarDate(1976, 7, 27, 0)
+        >>> sd-ld
+        datetime.timedelta(11444)
+        >>> ld+td
+        LunarDate(1976, 8, 18, 0)
+        >>> td+ld
+        LunarDate(1976, 8, 18, 0)
+        >>> ld2 = LunarDate.today()
+        >>> ld < ld2
+        True
+        >>> ld <= ld2
+        True
+        >>> ld > ld2
+        False
+        >>> ld >= ld2
+        False
+        >>> ld == ld2
+        False
+        >>> ld != ld2
+        True
+        >>> ld == ld
+        True
         
         News
         ----
         
+        * 0.1.4: support '+', '-' and compare, fix bug in year 2050
         * 0.1.3: support python 3.0
         
         Limits
         ------
         
-        this library can only deal with year from 1900 to 2050 (in chinese calendar).
+        this library can only deal with year from 1900 to 2049 (in chinese calendar).
         
         See also
         --------
