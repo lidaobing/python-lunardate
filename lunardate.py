@@ -65,12 +65,6 @@ Usage
         >>> LunarDate.today() == LunarDate.today()
         True
 
-News
-----
-
-* 0.1.4: support '+', '-' and compare, fix bug in year 2050
-* 0.1.3: support python 3.0
-
 Limits
 ------
 
@@ -87,7 +81,7 @@ See also
 
 import datetime
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __all__ = ['LunarDate']
 
 class LunarDate(object):
