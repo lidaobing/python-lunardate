@@ -184,6 +184,9 @@ class LunarDate(object):
     def __radd__(self, other):
         return self + other
 
+    def __eq__(self, other):
+        return self - other == datetime.timedelta(0)
+
     def __lt__(self, other):
         return self - other < datetime.timedelta(0)
 
