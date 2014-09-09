@@ -187,13 +187,55 @@ class LunarDate(object):
         return self + other
 
     def __eq__(self, other):
+        '''
+        >>> LunarDate.today() == 5
+        False
+        '''
+        if not isinstance(other, LunarDate):
+            return False
+
         return self - other == datetime.timedelta(0)
 
     def __lt__(self, other):
-        return self - other < datetime.timedelta(0)
+        '''
+        >>> LunarDate.today() < LunarDate.today()
+        False
+        >>> LunarDate.today() < 5
+        Traceback (most recent call last):
+        ...
+        TypeError: can't compare LunarDate to int
+        '''
+        try:
+            return self - other < datetime.timedelta(0)
+        except TypeError:
+            raise TypeError("can't compare LunarDate to %s" % (type(other).__name__,))
 
     def __le__(self, other):
-        return self - other <= datetime.timedelta(0)
+        # needed because the default implementation tries equality first,
+        # and that does not throw a type error
+        return self < other or self == other
+
+    def __gt__(self, other):
+        '''
+        >>> LunarDate.today() > LunarDate.today()
+        False
+        >>> LunarDate.today() > 5
+        Traceback (most recent call last):
+        ...
+        TypeError: can't compare LunarDate to int
+        '''
+        return not self <= other
+
+    def __ge__(self, other):
+        '''
+        >>> LunarDate.today() >= LunarDate.today()
+        True
+        >>> LunarDate.today() >= 5
+        Traceback (most recent call last):
+        ...
+        TypeError: can't compare LunarDate to int
+        '''
+        return not self < other
 
     @classmethod
     def today(cls):
