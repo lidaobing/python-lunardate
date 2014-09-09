@@ -62,6 +62,8 @@ Usage
         True
         >>> ld == ld
         True
+        >>> LunarDate.today() == LunarDate.today()
+        True
 
 News
 ----
