@@ -68,7 +68,7 @@ News
 Limits
 ------
 
-this library can only deal with year from 1900 to 2049 (in chinese calendar).
+this library can only deal with year from 1900 to 2099 (in chinese calendar).
 
 See also
 --------
