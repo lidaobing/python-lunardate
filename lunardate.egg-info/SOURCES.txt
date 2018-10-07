@@ -1,4 +1,4 @@
-README.rst
+README.md
 lunardate.py
 setup.py
 lunardate.egg-info/PKG-INFO
