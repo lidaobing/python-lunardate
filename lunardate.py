@@ -37,12 +37,12 @@ Usage
         >>> td = datetime.timedelta(days=10)
         >>> ld-ld
         datetime.timedelta(0)
-        >>> ld-sd
-        datetime.timedelta(days=-11444)
+        >>> (ld-sd).days
+        -11444
         >>> ld-td
         LunarDate(1976, 7, 27, 0)
-        >>> sd-ld
-        datetime.timedelta(days=11444)
+        >>> (sd-ld).days
+        11444
         >>> ld+td
         LunarDate(1976, 8, 18, 0)
         >>> td+ld
