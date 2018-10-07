@@ -179,8 +179,10 @@ class LunarDate(object):
             raise ValueError("month out of range")
 
         offset = 0
-        if self.year < 1900 or self.year >= 2100:
-            raise ValueError('year out of range [1900, 2100)')
+        start_year = 1900
+        end_year = start_year + len(yearInfos)
+        if start_year < 1900 or self.year >= end_year:
+            raise ValueError('year out of range [{}, {})'.format(start_year, end_year))
         yearIdx = self.year - 1900
         for i in range(yearIdx):
             offset += yearDays[i]
