@@ -38,11 +38,11 @@ Usage
         >>> ld-ld
         datetime.timedelta(0)
         >>> ld-sd
-        datetime.timedelta(-11444)
+        datetime.timedelta(days=-11444)
         >>> ld-td
         LunarDate(1976, 7, 27, 0)
         >>> sd-ld
-        datetime.timedelta(11444)
+        datetime.timedelta(days=11444)
         >>> ld+td
         LunarDate(1976, 8, 18, 0)
         >>> td+ld
@@ -64,6 +64,33 @@ Usage
         True
         >>> LunarDate.today() == LunarDate.today()
         True
+        >>> before_leap_month = LunarDate.fromSolarDate(2088, 5, 17)
+        >>> before_leap_month.year
+        2088
+        >>> before_leap_month.month
+        4
+        >>> before_leap_month.day
+        27
+        >>> before_leap_month.isLeapMonth
+        False
+        >>> leap_month = LunarDate.fromSolarDate(2088, 6, 17)
+        >>> leap_month.year
+        2088
+        >>> leap_month.month
+        4
+        >>> leap_month.day
+        28
+        >>> leap_month.isLeapMonth
+        True
+        >>> after_leap_month = LunarDate.fromSolarDate(2088, 7, 17)
+        >>> after_leap_month.year
+        2088
+        >>> after_leap_month.month
+        5
+        >>> after_leap_month.day
+        29
+        >>> after_leap_month.isLeapMonth
+        False
 
 Limits
 ------
@@ -126,10 +153,14 @@ class LunarDate(object):
         Traceback (most recent call last):
         ...
         ValueError: day out of range
-        >>> LunarDate(2050, 1, 1).toSolarDate()
+        >>> LunarDate(2004, 13, 1).toSolarDate()
         Traceback (most recent call last):
         ...
-        ValueError: year out of range [1900, 2050)
+        ValueError: month out of range
+        >>> LunarDate(2100, 1, 1).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: year out of range [1900, 2100)
         >>>
         '''
         def _calcDays(yearInfo, month, day, isLeapMonth):
