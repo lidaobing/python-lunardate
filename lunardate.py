@@ -38,11 +38,11 @@ Usage
         >>> ld-ld
         datetime.timedelta(0)
         >>> ld-sd
-        datetime.timedelta(-11444)
+        datetime.timedelta(days=-11444)
         >>> ld-td
         LunarDate(1976, 7, 27, 0)
         >>> sd-ld
-        datetime.timedelta(11444)
+        datetime.timedelta(days=11444)
         >>> ld+td
         LunarDate(1976, 8, 18, 0)
         >>> td+ld
@@ -64,11 +64,38 @@ Usage
         True
         >>> LunarDate.today() == LunarDate.today()
         True
+        >>> before_leap_month = LunarDate.fromSolarDate(2088, 5, 17)
+        >>> before_leap_month.year
+        2088
+        >>> before_leap_month.month
+        4
+        >>> before_leap_month.day
+        27
+        >>> before_leap_month.isLeapMonth
+        False
+        >>> leap_month = LunarDate.fromSolarDate(2088, 6, 17)
+        >>> leap_month.year
+        2088
+        >>> leap_month.month
+        4
+        >>> leap_month.day
+        28
+        >>> leap_month.isLeapMonth
+        True
+        >>> after_leap_month = LunarDate.fromSolarDate(2088, 7, 17)
+        >>> after_leap_month.year
+        2088
+        >>> after_leap_month.month
+        5
+        >>> after_leap_month.day
+        29
+        >>> after_leap_month.isLeapMonth
+        False
 
 Limits
 ------
 
-this library can only deal with year from 1900 to 2049 (in chinese calendar).
+this library can only deal with year from 1900 to 2099 (in chinese calendar).
 
 See also
 --------
@@ -126,10 +153,14 @@ class LunarDate(object):
         Traceback (most recent call last):
         ...
         ValueError: day out of range
-        >>> LunarDate(2050, 1, 1).toSolarDate()
+        >>> LunarDate(2004, 13, 1).toSolarDate()
         Traceback (most recent call last):
         ...
-        ValueError: year out of range [1900, 2050)
+        ValueError: month out of range
+        >>> LunarDate(2100, 1, 1).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: year out of range [1900, 2100)
         >>>
         '''
         def _calcDays(yearInfo, month, day, isLeapMonth):
@@ -148,8 +179,10 @@ class LunarDate(object):
             raise ValueError("month out of range")
 
         offset = 0
-        if self.year < 1900 or self.year >= 2050:
-            raise ValueError('year out of range [1900, 2050)')
+        start_year = 1900
+        end_year = start_year + len(yearInfos)
+        if start_year < 1900 or self.year >= end_year:
+            raise ValueError('year out of range [{}, {})'.format(start_year, end_year))
         yearIdx = self.year - 1900
         for i in range(yearIdx):
             offset += yearDays[i]
@@ -318,8 +351,18 @@ yearInfos = [
         0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0,#   /* 2035 */
         0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0,#   /* 2040 */
         0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0,#   /* 2045 */
-        0x0aa50, 0x1b255, 0x06d20, 0x0ada0          #   /* 2049 */
-        ]
+        0x0aa50, 0x1b255, 0x06d20, 0x0ada0, 0x14b63,#   /* 2050 */
+        0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6,#   /* 2055 */
+        0x0ea50, 0x06aa0, 0x1a6c4, 0x0aae0, 0x092e0,#   /* 2060 */
+        0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50,#   /* 2065 */
+        0x05d55, 0x056a0, 0x0a6d0, 0x055d4, 0x052d0,#   /* 2070 */
+        0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50,#   /* 2075 */
+        0x055a0, 0x0aba4, 0x0a5b0, 0x052b0, 0x0b273,#   /* 2080 */
+        0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55,#   /* 2085 */
+        0x04b60, 0x0a570, 0x054e4, 0x0d160, 0x0e968,#   /* 2090 */
+        0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0,#   /* 2095 */
+        0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,         #   /* 2099 */
+]
 
 def yearInfo2yearDay(yearInfo):
     '''calculate the days in a lunar year from the lunar year's info
