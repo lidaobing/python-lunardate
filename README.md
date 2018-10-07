@@ -4,9 +4,16 @@
 
 Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
 
+## Install
+
+```
+pip install lunardate
+```
+
 ## Usage
 
 ```
+        >>> from lunardate import LunarDate
         >>> LunarDate.fromSolarDate(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
         >>> LunarDate(1976, 8, 8, 1).toSolarDate()
