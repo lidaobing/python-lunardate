@@ -408,12 +408,9 @@ def day2LunarDate(offset):
         offset -= yearDay
     res.year = 1900 + idx
 
-
-
-
-
-
 if __name__ == '__main__':
     import doctest
-    doctest.testmod()
-
+    failure_count, test_count = doctest.testmod()
+    if failure_count > 0:
+        import sys
+        sys.exit(1)
