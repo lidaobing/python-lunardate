@@ -1,12 +1,12 @@
-A Chinese Calendar Library in Pure Python
-=========================================
+# A Chinese Calendar Library in Pure Python
 
-.. image:: https://travis-ci.org/lidaobing/python-lunardate.png?branch=master   :target: https://travis-ci.org/lidaobing/python-lunardate
+[![Build Status](https://travis-ci.org/lidaobing/python-lunardate.svg?branch=master)](https://travis-ci.org/lidaobing/python-lunardate)
 
 Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
 
-Usage
------
+## Usage
+
+```
         >>> LunarDate.fromSolarDate(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
         >>> LunarDate(1976, 8, 8, 1).toSolarDate()
@@ -57,21 +57,19 @@ Usage
         True
         >>> LunarDate.today() == LunarDate.today()
         True
+```
 
-News
-----
+## News
 
 * 0.1.5: fix bug in `==`
 * 0.1.4: support '+', '-' and compare, fix bug in year 2050
 * 0.1.3: support python 3.0
 
-Limits
-------
+## Limits
 
 this library can only deal with year from 1900 to 2099 (in chinese calendar).
 
-See also
---------
+## See also
 
 * lunar: http://packages.qa.debian.org/l/lunar.html,
   A converter written in C, this program is derived from it.
