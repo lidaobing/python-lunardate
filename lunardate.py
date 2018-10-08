@@ -308,7 +308,25 @@ class LunarDate(object):
         month, day, isLeapMonth = _calcMonthDay(yearInfo, offset)
         return LunarDate(year, month, day, isLeapMonth)
 
-yearInfos = [
+    @staticmethod
+    def select_country(country):
+      from pydoc import locate
+      class_name = "countries.%s.yearinfos.YearInfos"%(country)
+      global yearInfos, yearInfosCountry
+      try:
+        yearinfo_class = locate(class_name) 
+        clz = yearinfo_class()
+        yearInfos = clz.get_year_infos() 
+        yearInfosCountry = clz.get_year_infos_country()
+      except:
+        yearInfos = default_year_infos
+        yearInfosCountry = default_year_infos_country
+
+      return yearInfosCountry
+        
+
+default_year_infos_country = "china"
+default_year_infos = [
         #    /* encoding:
         #               b bbbbbbbbbbbb bbbb
         #       bit#    1 111111000000 0000
@@ -363,6 +381,9 @@ yearInfos = [
         0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0,#   /* 2095 */
         0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,         #   /* 2099 */
 ]
+
+yearInfos = default_year_infos
+yearInfosCountry = default_year_infos_country
 
 def yearInfo2yearDay(yearInfo):
     '''calculate the days in a lunar year from the lunar year's info
