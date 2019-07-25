@@ -16,6 +16,13 @@ setup(name='lunardate',
       classifiers = [
                      'Development Status :: 4 - Beta',
                      'Programming Language :: Python',
+                     'Programming Language :: Python :: 2',
+                     'Programming Language :: Python :: 2.7',
+                     'Programming Language :: Python :: 3',
+                     'Programming Language :: Python :: 3.4',
+                     'Programming Language :: Python :: 3.5',
+                     'Programming Language :: Python :: 3.6',
+                     'Programming Language :: Python :: 3.7',
                      'License :: OSI Approved :: GNU General Public License (GPL)',
                      'Operating System :: OS Independent',
                      'Topic :: Software Development :: Libraries :: Python Modules'
