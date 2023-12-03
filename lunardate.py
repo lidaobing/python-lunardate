@@ -136,6 +136,8 @@ class LunarDate(object):
         LunarDate(1976, 8, 8, 1)
         >>> LunarDate.fromSolarDate(2033, 10, 23)
         LunarDate(2033, 10, 1, 0)
+        >>> LunarDate.fromSolarDate(1956, 12, 2)
+        LunarDate(1956, 11, 1, 0)
         '''
         solarDate = datetime.date(year, month, day)
         offset = (solarDate - LunarDate._startDate).days
