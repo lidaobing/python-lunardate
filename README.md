@@ -1,5 +1,6 @@
 # A Chinese Calendar Library in Pure Python
 
+[![Python package](https://github.com/lidaobing/python-lunardate/actions/workflows/python-package.yml/badge.svg?branch=master)](https://github.com/lidaobing/python-lunardate/actions/workflows/python-package.yml)
 [![PyPI - Version](https://img.shields.io/pypi/v/lunardate)](https://pypi.org/project/lunardate/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/lunardate)](https://pypistats.org/packages/lunardate)
 
