@@ -1,3 +1,4 @@
+LICENSE.txt
 README.md
 lunardate.py
 setup.py

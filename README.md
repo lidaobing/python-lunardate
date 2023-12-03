@@ -68,6 +68,7 @@ pip install lunardate
 
 ## News
 
+* 0.2.1: fix bug in year 1956
 * 0.2.0: extend year to 2099, thanks to @FuGangqiang
 * 0.1.5: fix bug in `==`
 * 0.1.4: support '+', '-' and compare, fix bug in year 2050
