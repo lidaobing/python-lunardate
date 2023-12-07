@@ -126,6 +126,32 @@ class LunarDate(object):
     __repr__ = __str__
 
     @staticmethod
+    def leapMonthForYear(year):
+        '''
+        return None if no leap month, otherwise return the leap month of the year.
+        return 1 for the first month, and return 12 for the last month.
+
+        >>> LunarDate.leapMonthForYear(1976)
+        8
+        >>> LunarDate.leapMonthForYear(2023)
+        2
+        >>> LunarDate.leapMonthForYear(2022)
+        '''
+        start_year = 1900
+        end_year = start_year + len(yearInfos)
+        if year < start_year or year >= end_year:
+            raise ValueError('year out of range [{}, {})'.format(start_year, end_year))
+        yearIdx = year - start_year
+        yearInfo = yearInfos[yearIdx]
+        leapMonth = yearInfo % 16
+        if leapMonth == 0:
+            return None
+        elif leapMonth <= 12:
+            return leapMonth
+        else:
+            raise ValueError("yearInfo %r mod 16 should in [0, 12]" % yearInfo)
+
+    @staticmethod
     def fromSolarDate(year, month, day):
         '''
         >>> LunarDate.fromSolarDate(1900, 1, 31)
