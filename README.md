@@ -67,10 +67,16 @@ pip install lunardate
         True
         >>> LunarDate.today() == LunarDate.today()
         True
+
+        >>> LunarDate.leapMonthForYear(2023)
+        2
+        >>> LunarDate.leapMonthForYear(2022)
+        None
 ```
 
 ## News
 
+* 0.2.2: add LunarDate.leapMonthForYear; fix bug in year 1899
 * 0.2.1: fix bug in year 1956
 * 0.2.0: extend year to 2099, thanks to @FuGangqiang
 * 0.1.5: fix bug in `==`
