@@ -125,6 +125,19 @@ class LunarDate(object):
 
     __repr__ = __str__
 
+    @property
+    def leapMonth(self):
+        '''
+        >>> LunarDate(1995, 1, 1).leapMonth
+        8
+        >>> LunarDate(2023, 1, 1).leapMonth
+        2
+        '''
+        for month, day, isLeapMonth in self._enumMonth(yearInfos[self.year - 1900]):
+            if isLeapMonth:
+                return month
+        return None
+
     @staticmethod
     def fromSolarDate(year, month, day):
         '''
