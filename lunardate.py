@@ -151,6 +151,14 @@ class LunarDate(object):
         datetime.date(2008, 10, 2)
         >>> LunarDate(1976, 8, 8, 1).toSolarDate()
         datetime.date(1976, 10, 1)
+        >>> LunarDate(1976, 7, 8, 1).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: month out of range
+        >>> LunarDate(1899, 1, 1).toSolarDate()
+        Traceback (most recent call last):
+        ...
+        ValueError: year out of range [1900, 2100)
         >>> LunarDate(2004, 1, 30).toSolarDate()
         Traceback (most recent call last):
         ...
@@ -183,9 +191,9 @@ class LunarDate(object):
         offset = 0
         start_year = 1900
         end_year = start_year + len(yearInfos)
-        if start_year < 1900 or self.year >= end_year:
+        if self.year < start_year or self.year >= end_year:
             raise ValueError('year out of range [{}, {})'.format(start_year, end_year))
-        yearIdx = self.year - 1900
+        yearIdx = self.year - start_year
         for i in range(yearIdx):
             offset += yearDays[i]
 
