@@ -94,8 +94,7 @@ Usage
 
         >>> LunarDate.leapMonthForYear(2023)
         2
-        >>> LunarDate.leapMonthForYear(2022)
-        None        
+        >>> LunarDate.leapMonthForYear(2022) # will return None
 
 Limits
 ------
