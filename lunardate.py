@@ -92,6 +92,11 @@ Usage
         >>> after_leap_month.isLeapMonth
         False
 
+        >>> LunarDate.leapMonthForYear(2023)
+        2
+        >>> LunarDate.leapMonthForYear(2022)
+        None        
+
 Limits
 ------
 
@@ -108,7 +113,7 @@ See also
 
 import datetime
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __all__ = ['LunarDate']
 
 class LunarDate(object):

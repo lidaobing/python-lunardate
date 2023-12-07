@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: lunardate
-Version: 0.2.1
+Version: 0.2.2
 Summary: A Chinese Calendar Library in Pure Python
 Home-page: https://github.com/lidaobing/python-lunardate
 Author: LI Daobing
@@ -105,6 +105,11 @@ Usage
         29
         >>> after_leap_month.isLeapMonth
         False
+
+        >>> LunarDate.leapMonthForYear(2023)
+        2
+        >>> LunarDate.leapMonthForYear(2022)
+        None        
 
 Limits
 ------
