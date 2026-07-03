@@ -17,9 +17,9 @@ pip install lunardate
 
 ```
         >>> from lunardate import LunarDate
-        >>> LunarDate.fromSolarDate(1976, 10, 1)
+        >>> LunarDate.from_solar_date(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
-        >>> LunarDate(1976, 8, 8, 1).toSolarDate()
+        >>> LunarDate(1976, 8, 8, 1).to_solar_date()
         datetime.date(1976, 10, 1)
         >>> LunarDate(1976, 8, 8, 1).year
         1976
@@ -27,7 +27,7 @@ pip install lunardate
         8
         >>> LunarDate(1976, 8, 8, 1).day
         8
-        >>> LunarDate(1976, 8, 8, 1).isLeapMonth
+        >>> LunarDate(1976, 8, 8, 1).is_leap_month
         True
 
         >>> today = LunarDate.today()
@@ -68,15 +68,16 @@ pip install lunardate
         >>> LunarDate.today() == LunarDate.today()
         True
 
-        >>> LunarDate.leapMonthForYear(2023)
+        >>> LunarDate.leap_month_for_year(2023)
         2
-        >>> LunarDate.leapMonthForYear(2022)
+        >>> LunarDate.leap_month_for_year(2022)
         None
 ```
 
 ## News
 
-* 0.2.2: add LunarDate.leapMonthForYear; fix bug in year 1899
+* 0.2.3: rename all APIs to PEP 8 snake_case; add type hints; drop Python 2 support
+* 0.2.2: add LunarDate.leap_month_for_year; fix bug in year 1899
 * 0.2.1: fix bug in year 1956
 * 0.2.0: extend year to 2099, thanks to @FuGangqiang
 * 0.1.5: fix bug in `==`
