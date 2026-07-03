@@ -34,8 +34,8 @@ mypy lunardate.py
 
 仅 `LunarDate` 类。关键方法：
 
-- `LunarDate(year, month, day, isLeapMonth=False)` — 构造农历日期
-- `LunarDate.fromSolarDate(year, month, day)` — 公历转农历
-- `LunarDate.toSolarDate()` — 农历转公历
+- `LunarDate(year, month, day, is_leap_month=False)` — 构造农历日期
+- `LunarDate.from_solar_date(year, month, day)` — 公历转农历
+- `LunarDate.to_solar_date()` — 农历转公历
 - `LunarDate.today()` — 当前农历日期
-- `LunarDate.leapMonthForYear(year)` — 获取某年闰月（无闰月返回 None）
+- `LunarDate.leap_month_for_year(year)` — 获取某年闰月（无闰月返回 None）
