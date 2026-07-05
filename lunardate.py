@@ -113,6 +113,7 @@ See also
 from __future__ import annotations
 
 import datetime
+import warnings
 from typing import ClassVar, Iterator, Optional, overload
 
 __version__ = "0.2.3"
@@ -136,6 +137,15 @@ class LunarDate:
         return 'LunarDate(%d, %d, %d, %d)' % (self.year, self.month, self.day, self.is_leap_month)
 
     __repr__: ClassVar = __str__
+
+    @staticmethod
+    def leapMonthForYear(year: int) -> Optional[int]:
+        warnings.warn(
+            "leapMonthForYear 已废弃，请使用 leap_month_for_year 代替",
+            DeprecationWarning,
+            stacklevel=2  # 让警告指向调用者的代码行，而不是这里
+        )
+        return LunarDate.leap_month_for_year(year)
 
     @staticmethod
     def leap_month_for_year(year: int) -> Optional[int]:
@@ -211,8 +221,7 @@ class LunarDate:
         ValueError: year out of range [1900, 2100)
         >>>
         '''
-        def _calc_days(year_info: int, month: int, day: int, is_leap_month: bool) -> int:
-            is_leap_month = int(is_leap_month)
+        def _calc_days(year_info: int, month: int, day: int, is_leap_month: int) -> int:
             res = 0
             for m, d, is_leap in self._enum_month(year_info):
                 if (m, is_leap) == (month, is_leap_month):
@@ -343,7 +352,7 @@ class LunarDate:
 
     @classmethod
     def _from_offset(cls, offset: int) -> LunarDate:
-        def _calc_month_day(year_info: int, offset: int) -> tuple[int, int, bool]:
+        def _calc_month_day(year_info: int, offset: int) -> tuple[int, int, int]:
             for month, days, is_leap_month in cls._enum_month(year_info):
                 if offset < days:
                     break
@@ -360,7 +369,7 @@ class LunarDate:
 
         year_info = YEAR_INFOS[idx]
         month, day, is_leap_month = _calc_month_day(year_info, offset)
-        return LunarDate(year, month, day, is_leap_month)
+        return LunarDate(year, month, day, bool(is_leap_month))
 
 YEAR_INFOS: list[int] = [
         #    /* encoding:

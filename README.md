@@ -4,8 +4,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/lunardate)](https://pypi.org/project/lunardate/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/lunardate)](https://pypistats.org/packages/lunardate)
 
-
-Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
+Chinese Calendar: <http://en.wikipedia.org/wiki/Chinese_calendar>
 
 ## Install
 
@@ -76,8 +75,7 @@ pip install lunardate
 
 ## News
 
-* 0.2.3: rename all APIs to PEP 8 snake_case; add type hints; drop Python 2 support
-* 0.2.2: add LunarDate.leap_month_for_year; fix bug in year 1899
+* 0.2.2: add LunarDate.leapMonthForYear; fix bug in year 1899
 * 0.2.1: fix bug in year 1956
 * 0.2.0: extend year to 2099, thanks to @FuGangqiang
 * 0.1.5: fix bug in `==`
@@ -90,7 +88,7 @@ this library can only deal with year from 1900 to 2099 (in chinese calendar).
 
 ## See also
 
-* lunar: http://packages.qa.debian.org/l/lunar.html,
+* lunar: <http://packages.qa.debian.org/l/lunar.html>,
   A converter written in C, this program is derived from it.
-* python-lunar: http://code.google.com/p/liblunar/
+* python-lunar: <http://code.google.com/p/liblunar/>
   Another library written in C, including a python binding.
