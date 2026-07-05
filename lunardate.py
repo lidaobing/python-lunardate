@@ -126,6 +126,7 @@ class LunarDate:
     month: int
     day: int
     is_leap_month: bool
+    isLeapMonth: bool # deprecated
 
     def __init__(self, year: int, month: int, day: int, is_leap_month: bool = False) -> None:
         self.year = year
