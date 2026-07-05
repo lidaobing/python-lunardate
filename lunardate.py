@@ -116,7 +116,7 @@ import datetime
 import warnings
 from typing import ClassVar, Iterator, Optional, overload
 
-__version__ = "0.2.3"
+__version__ = "0.2.2"
 __all__ = ['LunarDate']
 
 class LunarDate:
@@ -132,6 +132,7 @@ class LunarDate:
         self.month = month
         self.day = day
         self.is_leap_month = bool(is_leap_month)
+        self.isLeapMonth = self.is_leap_month # deprecated
 
     def __str__(self) -> str:
         return 'LunarDate(%d, %d, %d, %d)' % (self.year, self.month, self.day, self.is_leap_month)
@@ -141,9 +142,9 @@ class LunarDate:
     @staticmethod
     def leapMonthForYear(year: int) -> Optional[int]:
         warnings.warn(
-            "leapMonthForYear 已废弃，请使用 leap_month_for_year 代替",
+            "leapMonthForYear is deprecated, use leap_month_for_year instead",
             DeprecationWarning,
-            stacklevel=2  # 让警告指向调用者的代码行，而不是这里
+            stacklevel=2 
         )
         return LunarDate.leap_month_for_year(year)
 
@@ -172,6 +173,15 @@ class LunarDate:
             return leap_month
         else:
             raise ValueError("yearInfo %r mod 16 should in [0, 12]" % year_info)
+        
+    @staticmethod
+    def fromSolarDate(year: int, month: int, day: int) -> LunarDate:
+        warnings.warn(
+            "fromSolarDate is deprecated, use from_solar_date instead",
+            DeprecationWarning,
+            stacklevel=2 
+        )
+        return LunarDate.from_solar_date(year, month, day)
 
     @staticmethod
     def from_solar_date(year: int, month: int, day: int) -> LunarDate:
@@ -190,6 +200,15 @@ class LunarDate:
         solar_date = datetime.date(year, month, day)
         offset = (solar_date - LunarDate._start_date).days
         return LunarDate._from_offset(offset)
+    
+    def toSolarDate(self) -> datetime.date:
+        warnings.warn(
+            "toSolarDate is deprecated, use to_solar_date instead",
+            DeprecationWarning,
+            stacklevel=2 
+        )
+        return self.to_solar_date()
+
 
     def to_solar_date(self) -> datetime.date:
         '''
@@ -428,6 +447,20 @@ YEAR_INFOS: list[int] = [
 ]
 
 def year_info_to_year_day(year_info: int) -> int:
+    '''calculate the days in a lunar year from the lunar year's info
+
+    >>> year_info_to_year_day(0) # no leap month, and every month has 29 days.
+    348
+    >>> year_info_to_year_day(1) # 1 leap month, and every month has 29 days.
+    377
+    >>> year_info_to_year_day((2**12-1)*16) # no leap month, and every month has 30 days.
+    360
+    >>> year_info_to_year_day((2**13-1)*16+1) # 1 leap month, and every month has 30 days.
+    390
+    >>> # 1 leap month, and every normal month has 30 days, and leap month has 29 days.
+    >>> year_info_to_year_day((2**12-1)*16+1)
+    389
+    '''
     res = 29 * 12
 
     leap = False
