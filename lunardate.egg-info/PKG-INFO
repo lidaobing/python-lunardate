@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: lunardate
 Version: 0.2.2
 Summary: A Chinese Calendar Library in Pure Python
@@ -7,18 +7,26 @@ Author: LI Daobing
 Author-email: lidaobing@gmail.com
 License: GPLv3
 Classifier: Development Status :: 4 - Beta
-Classifier: Programming Language :: Python
-Classifier: Programming Language :: Python :: 2
-Classifier: Programming Language :: Python :: 2.7
 Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.4
-Classifier: Programming Language :: Python :: 3.5
-Classifier: Programming Language :: Python :: 3.6
 Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
 Classifier: License :: OSI Approved :: GNU General Public License (GPL)
 Classifier: Operating System :: OS Independent
 Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
 License-File: LICENSE.txt
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-python
+Dynamic: summary
 
 
 A Chinese Calendar Library in Pure Python
@@ -108,8 +116,7 @@ Usage
 
         >>> LunarDate.leapMonthForYear(2023)
         2
-        >>> LunarDate.leapMonthForYear(2022)
-        None        
+        >>> LunarDate.leapMonthForYear(2022) # will return None
 
 Limits
 ------

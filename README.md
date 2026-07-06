@@ -4,8 +4,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/lunardate)](https://pypi.org/project/lunardate/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/lunardate)](https://pypistats.org/packages/lunardate)
 
-
-Chinese Calendar: http://en.wikipedia.org/wiki/Chinese_calendar
+Chinese Calendar: <http://en.wikipedia.org/wiki/Chinese_calendar>
 
 ## Install
 
@@ -17,9 +16,9 @@ pip install lunardate
 
 ```
         >>> from lunardate import LunarDate
-        >>> LunarDate.fromSolarDate(1976, 10, 1)
+        >>> LunarDate.from_solar_date(1976, 10, 1)
         LunarDate(1976, 8, 8, 1)
-        >>> LunarDate(1976, 8, 8, 1).toSolarDate()
+        >>> LunarDate(1976, 8, 8, 1).to_solar_date()
         datetime.date(1976, 10, 1)
         >>> LunarDate(1976, 8, 8, 1).year
         1976
@@ -27,7 +26,7 @@ pip install lunardate
         8
         >>> LunarDate(1976, 8, 8, 1).day
         8
-        >>> LunarDate(1976, 8, 8, 1).isLeapMonth
+        >>> LunarDate(1976, 8, 8, 1).is_leap_month
         True
 
         >>> today = LunarDate.today()
@@ -68,9 +67,9 @@ pip install lunardate
         >>> LunarDate.today() == LunarDate.today()
         True
 
-        >>> LunarDate.leapMonthForYear(2023)
+        >>> LunarDate.leap_month_for_year(2023)
         2
-        >>> LunarDate.leapMonthForYear(2022)
+        >>> LunarDate.leap_month_for_year(2022)
         None
 ```
 
@@ -89,7 +88,7 @@ this library can only deal with year from 1900 to 2099 (in chinese calendar).
 
 ## See also
 
-* lunar: http://packages.qa.debian.org/l/lunar.html,
+* lunar: <http://packages.qa.debian.org/l/lunar.html>,
   A converter written in C, this program is derived from it.
-* python-lunar: http://code.google.com/p/liblunar/
+* python-lunar: <http://code.google.com/p/liblunar/>
   Another library written in C, including a python binding.
