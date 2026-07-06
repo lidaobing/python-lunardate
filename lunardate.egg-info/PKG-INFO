@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: lunardate
-Version: 0.2.2
+Version: 0.3.0
 Summary: A Chinese Calendar Library in Pure Python
 Home-page: https://github.com/lidaobing/python-lunardate
 Author: LI Daobing
