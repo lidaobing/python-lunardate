@@ -114,7 +114,7 @@ from __future__ import annotations
 
 import datetime
 import warnings
-from typing import ClassVar, Iterator, Optional, overload
+from typing import ClassVar, Iterator, Optional, Union, overload
 
 __version__ = "0.2.2"
 __all__ = ['LunarDate']
@@ -126,19 +126,22 @@ class LunarDate:
     month: int
     day: int
     is_leap_month: bool
-    isLeapMonth: bool # deprecated
 
     def __init__(self, year: int, month: int, day: int, is_leap_month: bool = False) -> None:
         self.year = year
         self.month = month
         self.day = day
         self.is_leap_month = bool(is_leap_month)
-        self.isLeapMonth = self.is_leap_month # deprecated
 
     def __str__(self) -> str:
         return 'LunarDate(%d, %d, %d, %d)' % (self.year, self.month, self.day, self.is_leap_month)
 
-    __repr__: ClassVar = __str__
+    __repr__ = __str__
+
+    @property
+    def isLeapMonth(self) -> bool:
+        warnings.warn("use is_leap_month", DeprecationWarning)
+        return self.is_leap_month
 
     @staticmethod
     def leapMonthForYear(year: int) -> Optional[int]:
@@ -272,7 +275,7 @@ class LunarDate:
     def __sub__(self, other: datetime.date) -> datetime.timedelta: ...
     @overload
     def __sub__(self, other: datetime.timedelta) -> LunarDate: ...
-    def __sub__(self, other: LunarDate | datetime.date | datetime.timedelta) -> datetime.timedelta | LunarDate:
+    def __sub__(self, other: Union[LunarDate, datetime.date, datetime.timedelta]) -> Union[datetime.timedelta, LunarDate]:
         if isinstance(other, LunarDate):
             return self.to_solar_date() - other.to_solar_date()
         elif isinstance(other, datetime.date):
@@ -282,7 +285,7 @@ class LunarDate:
             return LunarDate.from_solar_date(res.year, res.month, res.day)
         raise TypeError
 
-    def __rsub__(self, other: datetime.date) -> datetime.timedelta | None:
+    def __rsub__(self, other: datetime.date) -> Union[datetime.timedelta, None]:
         if isinstance(other, datetime.date):
             return other - self.to_solar_date()
         return None
