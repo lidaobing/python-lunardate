@@ -116,7 +116,7 @@ import datetime
 import warnings
 from typing import ClassVar, Iterator, Optional, Union, overload
 
-__version__ = "0.2.2"
+__version__ = "0.3.0"
 __all__ = ['LunarDate']
 
 class LunarDate:

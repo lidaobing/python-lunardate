@@ -12,7 +12,7 @@ setup(name='lunardate',
       author = 'LI Daobing',
       author_email = 'lidaobing@gmail.com',
       url = 'https://github.com/lidaobing/python-lunardate',
-      license = 'GPLv3',
+      license = 'GPL-3.0-or-later',
       python_requires='>=3.7',
       classifiers = [
                      'Development Status :: 4 - Beta',
@@ -22,7 +22,6 @@ setup(name='lunardate',
                      'Programming Language :: Python :: 3.9',
                      'Programming Language :: Python :: 3.10',
                      'Programming Language :: Python :: 3.11',
-                     'License :: OSI Approved :: GNU General Public License (GPL)',
                      'Operating System :: OS Independent',
                      'Topic :: Software Development :: Libraries :: Python Modules'
                      ]

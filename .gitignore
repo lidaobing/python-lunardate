@@ -2,3 +2,4 @@
 *.swp
 build
 dist
+lunardate.egg-info/PKG-INFO

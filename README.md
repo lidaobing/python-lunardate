@@ -75,6 +75,7 @@ pip install lunardate
 
 ## News
 
+* 0.3.0: drop python 2, add typing hints, rename identifiers to follow PEP 8
 * 0.2.2: add LunarDate.leapMonthForYear; fix bug in year 1899
 * 0.2.1: fix bug in year 1956
 * 0.2.0: extend year to 2099, thanks to @FuGangqiang
