@@ -1,14 +1,25 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
+import os
+import re
 
-import lunardate
+def get_version():
+    with open(
+        os.path.join(os.path.dirname(__file__), "lunardate.py"),
+        "r",
+        encoding="utf-8",
+    ) as f:
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", f.read(), re.M)
+        if version_match:
+            return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
 
 setup(name='lunardate',
-      version=lunardate.__version__,
+      version=get_version(),
       py_modules = ['lunardate'],
       description = 'A Chinese Calendar Library in Pure Python',
-      long_description = lunardate.__doc__,
+      long_description = open("README.md", "r", encoding="utf-8").read(),
       author = 'LI Daobing',
       author_email = 'lidaobing@gmail.com',
       url = 'https://github.com/lidaobing/python-lunardate',
