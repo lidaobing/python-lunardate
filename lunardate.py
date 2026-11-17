@@ -96,6 +96,18 @@ Usage
         2
         >>> LunarDate.leap_month_for_year(2022) # will return None
 
+        >>> # month lengths match the Hong Kong Observatory tables
+        >>> LunarDate.from_solar_date(1933, 7, 22)
+        LunarDate(1933, 5, 30, 1)
+        >>> LunarDate.from_solar_date(1933, 7, 23)
+        LunarDate(1933, 6, 1, 0)
+        >>> LunarDate.from_solar_date(1954, 11, 25)
+        LunarDate(1954, 11, 1, 0)
+        >>> LunarDate.from_solar_date(1978, 9, 2)
+        LunarDate(1978, 7, 30, 0)
+        >>> LunarDate(1978, 8, 1).to_solar_date()
+        datetime.date(1978, 9, 3)
+
 Limits
 ------
 
@@ -414,16 +426,16 @@ YEAR_INFOS: list[int] = [
         0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970,#   /* 1920 */
         0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54,#   /* 1925 */
         0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566,#   /* 1930 */
-        0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60,#   /* 1935 */
+        0x0d4a0, 0x0ea50, 0x16a95, 0x05ad0, 0x02b60,#   /* 1935 */
         0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0,#   /* 1940 */
         0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0,#   /* 1945 */
         0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0,#   /* 1950 */
-        0x0b550, 0x15355, 0x04da0, 0x0a5d0, 0x14573,#   /* 1955 */
+        0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573,#   /* 1955 */
         0x052b0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6,#   /* 1960 */
         0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260,#   /* 1965 */
         0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0,#   /* 1970 */
         0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250,#   /* 1975 */
-        0x0d558, 0x0b540, 0x0b5a0, 0x195a6, 0x095b0,#   /* 1980 */
+        0x0d558, 0x0b540, 0x0b6a0, 0x195a6, 0x095b0,#   /* 1980 */
         0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50,#   /* 1985 */
         0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5,#   /* 1990 */
         0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58,#   /* 1995 */
