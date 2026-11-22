@@ -1,3 +1,37 @@
 [build-system]
 requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "lunardate"
+dynamic = ["version"]
+description = "A Chinese Calendar Library in Pure Python"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.7"
+authors = [
+    { name = "LI Daobing", email = "lidaobing@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/lidaobing/python-lunardate"
+
+[tool.setuptools]
+py-modules = ["lunardate"]
+
+[tool.setuptools.dynamic]
+version = { attr = "lunardate.__version__" }
