@@ -75,6 +75,7 @@ pip install lunardate
 
 ## News
 
+* 0.3.1: fix month lengths for lunar years 1933, 1954 and 1978; expand CI to Python 3.12-3.14 on ubuntu-24.04
 * 0.3.0: drop python 2, add typing hints, rename identifiers to follow PEP 8
 * 0.2.2: add LunarDate.leapMonthForYear; fix bug in year 1899
 * 0.2.1: fix bug in year 1956
