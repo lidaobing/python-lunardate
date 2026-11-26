@@ -212,6 +212,20 @@ class LunarDate:
         LunarDate(2033, 10, 1, 0)
         >>> LunarDate.from_solar_date(1956, 12, 2)
         LunarDate(1956, 11, 1, 0)
+        >>> LunarDate.from_solar_date(2100, 2, 8)
+        LunarDate(2099, 12, 30, 0)
+        >>> LunarDate.from_solar_date(1900, 1, 30)
+        Traceback (most recent call last):
+        ...
+        ValueError: solar date out of range [1900-01-31, 2100-02-09)
+        >>> LunarDate.from_solar_date(2100, 2, 9)
+        Traceback (most recent call last):
+        ...
+        ValueError: solar date out of range [1900-01-31, 2100-02-09)
+        >>> LunarDate(2099, 12, 30) + datetime.timedelta(days=1)
+        Traceback (most recent call last):
+        ...
+        ValueError: solar date out of range [1900-01-31, 2100-02-09)
         '''
         solar_date = datetime.date(year, month, day)
         offset = (solar_date - LunarDate._start_date).days
@@ -395,6 +409,10 @@ class LunarDate:
             return (month, offset + 1, is_leap_month)
 
         offset = int(offset)
+
+        if offset < 0 or offset >= sum(YEAR_DAYS):
+            end_date = cls._start_date + datetime.timedelta(days=sum(YEAR_DAYS))
+            raise ValueError('solar date out of range [{}, {})'.format(cls._start_date, end_date))
 
         for idx, year_day in enumerate(YEAR_DAYS):
             if offset < year_day:
